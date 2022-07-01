@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+       -  id: test_gateway
+          uri: http://www.baidu.com
+          predicates:
+            - Query=url,baidu

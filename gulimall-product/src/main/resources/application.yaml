@@ -1,0 +1,16 @@
+# 数据源
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.202.128:3306/gulimall_pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+
+#MyBatisPlus相关配置
+mybatis-plus:
+  mapper-locations: classpath:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto
+
+
+

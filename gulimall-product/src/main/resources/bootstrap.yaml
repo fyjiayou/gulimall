@@ -1,0 +1,21 @@
+# 访问端口号
+server:
+  port: 10000
+
+spring:
+  # 服务名
+  application:
+    name: gulimall-product
+
+  cloud:
+    nacos:
+      # 注册中心
+      discovery:
+        server-addr: localhost:8848
+
+      # 配置中心
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        namespace: 9762890d-604d-4f32-8677-ba2fc3f24cfb
+        group: dev

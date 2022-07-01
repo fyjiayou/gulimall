@@ -1,0 +1,26 @@
+# 访问端口号
+server:
+  port: 7000
+
+spring:
+  # 服务名
+  application:
+    name: gulimall-coupon
+
+  cloud:
+    nacos:
+      # 注册中心
+      discovery:
+        server-addr: localhost:8848
+
+      # 配置中心
+      config:
+        server-addr: localhost:8848
+        file-extension: yaml
+        namespace: 74709a5d-fddb-41c2-acb8-91335111192f
+        group: dev
+
+        extension-configs:
+          - {dataId: datasource.yaml,group: dev,refresh: true}
+          - {dataId: mybatis.yaml,group: dev,refresh: true}
+          - {dataId: other.yaml,group: dev,refresh: true}
