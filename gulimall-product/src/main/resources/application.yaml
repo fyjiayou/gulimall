@@ -1,0 +1,27 @@
+server:
+  port: 10001
+
+spring:
+  application:
+    name: gulimall-product
+
+  datasource:
+    url: jdbc:mysql://192.168.123.129:3306/gulimall_pms?useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.123.129:8848
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  global-config:
+    db-config:
+      id-type: auto  #主键自增
+
+logging:
+  level:
+    com.atguigu.gulimall: debug
