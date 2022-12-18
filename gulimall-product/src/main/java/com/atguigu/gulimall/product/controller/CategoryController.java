@@ -24,6 +24,17 @@ public class CategoryController {
     private CategoryService categoryService;
 
     /**
+     * 树形封装三级分类信息
+     * @return
+     */
+    @GetMapping("/list/tree")
+    public R tree(){
+        List<CategoryEntity> list = categoryService.listWithTree();
+
+        return R.ok().put("tree",list);
+    }
+
+    /**
      * 信息
      */
     @RequestMapping("/info/{catId}")
@@ -57,8 +68,24 @@ public class CategoryController {
      * 批量修改
      */
     @PostMapping("/update/sort")
-    public R updateBatch(@RequestBody CategoryEntity[] category){
-        categoryService.updateBatchById(Arrays.asList(category));
+    public R updateBatch(@RequestBody List<CategoryEntity> categoryList){
+        categoryService.updateBatchById(categoryList);
+
+        return R.ok();
+    }
+
+    /**
+     * 根据catIds批量删除分类信息
+     *
+     *   多个id值[1,2,3]
+     *   json数组格式 <---> java的list集合
+     *
+     * @param catIds
+     * @return
+     */
+    @PostMapping("/delete")
+    public R delete(@RequestBody List<Long> catIds){
+        categoryService.removeMenuByIds(catIds);
 
         return R.ok();
     }

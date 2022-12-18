@@ -41,7 +41,7 @@ public class CategoryEntity implements Serializable {
 	/**
 	 * 是否显示[0-不显示，1显示]
 	 */
-	@TableLogic
+	@TableLogic(value = "1",delval = "0")
 	private Integer showStatus;
 	/**
 	 * 排序
@@ -60,6 +60,9 @@ public class CategoryEntity implements Serializable {
 	 */
 	private Integer productCount;
 
-	@TableField(exist = false)  //表名该字段在数据库表里不存在
+	/**
+	 * 封装子节点，children字段在数据库表里不存在
+	 */
+	@TableField(exist = false)
 	private List<CategoryEntity> children;
 }

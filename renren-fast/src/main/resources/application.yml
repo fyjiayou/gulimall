@@ -41,7 +41,12 @@ spring:
       matching-strategy: ANT_PATH_MATCHER
 #  resources:
 #    add-mappings: false
-
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.123.129:8848
+  application:
+    name: renren-fast
 
 #mybatis
 mybatis-plus:

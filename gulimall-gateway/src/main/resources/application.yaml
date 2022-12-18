@@ -9,3 +9,22 @@ spring:
     nacos:
       discovery:
         server-addr: 192.168.123.129:8848
+
+    ## 精确的路由放在上边，模糊的放在下边
+    gateway:
+      routes:
+        - id: gulimall-product
+          uri: lb://gulimall-product
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+
+        ## 前端项目 发送请求带上 /api前缀
+        ## http://localhost:88/api/captcha.jpg ===> http://localhost:8001/renren-fast/captcha.jpg
+        - id: renren-fast
+          uri: lb://renren-fast
+          predicates:
+            - Path=/api/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}  # /api/bar ==> renren-fast/bar

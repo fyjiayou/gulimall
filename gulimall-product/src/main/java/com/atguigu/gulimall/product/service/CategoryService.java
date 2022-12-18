@@ -17,5 +17,14 @@ import java.util.Map;
 public interface CategoryService extends IService<CategoryEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    /**
+     * 树形封装分类信息
+     *
+     * @return
+     */
+    List<CategoryEntity> listWithTree();
+
+    void removeMenuByIds(List<Long> catIds);
 }
 
