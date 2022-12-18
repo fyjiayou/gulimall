@@ -35,9 +35,9 @@ public class CategoryController {
     }
 
     /**
-     * 信息
+     * 根据catId查询分类信息
      */
-    @RequestMapping("/info/{catId}")
+    @GetMapping("/info/{catId}")
     public R info(@PathVariable("catId") Long catId){
 		CategoryEntity category = categoryService.getById(catId);
 
